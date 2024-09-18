@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOSEPH SAKO FOR COMPUTERS & REQUISITES TRADING CO. L.L.C</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+        }
+        .products {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px;
+            padding: 0;
+        }
+        .product {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            text-align: center;
+            width: 30%;
+            margin: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .product img {
+            max-width: 100%;
+            height: auto;
+        }
+        .product h2 {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+        .product p {
+            color: #888;
+        }
+        .price {
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        button {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #000;
+        }
+        .cart {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #checkoutModal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        #checkoutModal .modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 5px;
+            max-height: 50%;
+            overflow-y: auto;
+        }
+        .modal-content input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+        }
+        .modal-content button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .modal-content button:hover {
+            background-color: #000;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover, .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .products {
+                justify-content: center;
+            }
+
+            .product {
+                width: 90%;
+                margin: 15px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 24px;
+            }
+            .product h2 {
+                font-size: 18px;
+            }
+            .price {
+                font-size: 16px;
+            }
+            button {
+                font-size: 14px;
+                padding: 8px;
+            }
+            .cart {
+                padding: 8px;
+                font-size: 14px;
+            }
+            .modal-content {
+                padding: 15px;
+            }
+            .product {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>JOSEPH SAKO FOR COMPUTERS & REQUISITES TRADING CO. L.L.C</h1>
+</header>
+
+<div class="products">
+    <div class="product">
+        <img src="images/1.png">
+        <h2>Mechanical Keyboard</h2>
+        <p>Tactile keys for enhanced typing.</p>
+        <p class="price">$79.99</p>
+        <button onclick="addToCart('Mechanical Keyboard', 79.99)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="images/2.png">
+        <h2>Wireless Mouse</h2>
+        <p>Ergonomic design for comfort.</p>
+        <p class="price">$24.99</p>
+        <button onclick="addToCart('Wireless Mouse', 24.99)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="images/3.png">
+        <h2>Mouse Pad</h2>
+        <p>Smooth surface for precision.</p>
+        <p class="price">$9.99</p>
+        <button onclick="addToCart('Mouse Pad', 9.99)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="images/4.png">
+        <h2>Bluetooth Speaker</h2>
+        <p>Portable sound with great quality.</p>
+        <p class="price">$59.99</p>
+        <button onclick="addToCart('Bluetooth Speaker', 59.99)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="images/5.png">
+        <h2>Desktop Microphone</h2>
+        <p>Clear audio for streaming and calls.</p>
+        <p class="price">$44.99</p>
+        <button onclick="addToCart('Desktop Microphone', 44.99)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="images/6.png">
+        <h2>Earbuds</h2>
+        <p>Lightweight and portable sound.</p>
+        <p class="price">$59.99</p>
+        <button onclick="addToCart('Earbuds', 59.99)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="images/7.png">
+        <h2>External Hard Drive</h2>
+        <p>Reliable storage for backups.</p>
+        <p class="price">$79.99</p>
+        <button onclick="addToCart('External Hard Drive', 79.99)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="images/8.png">
+        <h2>USB Flash Drive</h2>
+        <p>Compact storage for files.</p>
+        <p class="price">$19.99</p>
+        <button onclick="addToCart('USB Flash Drive', 19.99)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="images/9.png">
+        <h2>USB-C Hub</h2>
+        <p>Expand your connectivity options.</p>
+        <p class="price">$24.99</p>
+        <button onclick="addToCart('USB-C Hub', 24.99)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="images/10.png">
+        <h2>Webcam</h2>
+        <p>Crystal clear video quality.</p>
+        <p class="price">$49.99</p>
+        <button onclick="addToCart('Webcam', 49.99)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="images/11.png">
+        <h2>Portable Charger</h2>
+        <p>Power on-the-go convenience.</p>
+        <p class="price">$29.99</p>
+        <button onclick="addToCart('Portable Charger', 29.99)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="images/12.png">
+        <h2>HDMI Cable</h2>
+        <p>High-speed video transmission.</p>
+        <p class="price">$14.99</p>
+        <button onclick="addToCart('HDMI Cable', 14.99)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="images/13.png">
+        <h2>Laptop Stand</h2>
+        <p>Elevates for better posture and airflow.</p>
+        <p class="price">$39.99</p>
+        <button onclick="addToCart('Laptop Stand', 39.99)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="images/14.png">
+        <h2>Screen Cleaner Kit</h2>
+        <p>Keep screens spotless and clear.</p>
+        <p class="price">$14.99</p>
+        <button onclick="addToCart('Screen Cleaner Kit', 14.99)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="images/15.png">
+        <h2>Headphones</h2>
+        <p>Comfortable fit with immersive sound.</p>
+        <p class="price">$54.99</p>
+        <button onclick="addToCart('Headphones', 54.99)">Add to Cart</button>
+    </div>
+</div>
+
+<div class="cart" onclick="showCart()">
+    My Cart (<span id="cart-count">0</span>)
+</div>
+
+<div id="checkoutModal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Checkout</h2>
+        <div id="cart-summary"></div>
+        <input type="text" id="name" placeholder="Full Name" required>
+        <input type="text" id="address" placeholder="Shipping Address" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="text" id="card-number" placeholder="Card Number" maxlength="16" required>
+        <input type="text" id="expiry" placeholder="Expiry Date (MM/YY)" required>
+        <input type="text" id="cvv" placeholder="CVV" maxlength="3" required>
+        <button onclick="confirmCheckout()">Confirm Purchase</button>
+    </div>
+</div>
+
+<script>
+    let cart = [];
+
+    function addToCart(product, price) {
+        cart.push({ product, price });
+        document.getElementById('cart-count').innerText = cart.length;
+        alert(product + " has been added to your cart.");
+    }
+
+    function showCart() {
+        if (cart.length === 0) {
+            alert("Your cart is empty.");
+            return;
+        }
+
+        let cartSummary = "<h3>Cart Summary</h3>";
+        let total = 0;
+        cart.forEach(item => {
+            cartSummary += item.product + " - $" + item.price.toFixed(2) + "<br>";
+            total += item.price;
+        });
+
+        total = total.toFixed(2);
+        cartSummary += "<strong>Total: $" + total + "</strong>";
+
+        document.getElementById('cart-summary').innerHTML = cartSummary;
+        document.getElementById('checkoutModal').style.display = "block";
+    }
+
+    function closeModal() {
+        document.getElementById('checkoutModal').style.display = "none";
+    }
+
+    function confirmCheckout() {
+        const name = document.getElementById('name').value;
+        const address = document.getElementById('address').value;
+        const email = document.getElementById('email').value;
+        const cardNumber = document.getElementById('card-number').value;
+        const expiry = document.getElementById('expiry').value;
+        const cvv = document.getElementById('cvv').value;
+
+        if (!name || !address || !email || !cardNumber || !expiry || !cvv) {
+            alert("Please fill in all required fields.");
+            return;
+        }
+
+        alert(`Thank you for your purchase, ${name}! Your items will be shipped to ${address}. A confirmation email has been sent to ${email}.`);
+        
+        cart = [];
+        document.getElementById('cart-count').innerText = 0;
+        closeModal();
+    }
+
+    window.onclick = function(event) {
+        const modal = document.getElementById('checkoutModal');
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+</script>
+
+</body>
+</html>
